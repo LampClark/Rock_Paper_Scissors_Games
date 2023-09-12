@@ -15,6 +15,12 @@ post '/result' do
     @ai_choice = [Rock, Paper, Scissors].sample
 
     if @player_choice == @ai_choice
-        @outcome = "Tie!"
+        @outcome = "DRAW !"
+    else (player_choice == "Rock" && ai_choice == "Scissors") ||
+         (player_choice == "Paper" && ai_choice == "Rock") ||
+         (player_choice == "Scissors" && ai_choice == "Paper")
+        "YOU WIN ! | AI lose !"
     else
-        case @player_choice
+        "AI WIN ! | YOU LOSE !"
+    end
+end
