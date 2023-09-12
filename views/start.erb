@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors !</title>
+</head>
+    <h1>Let's go ! Rock, Paper, Scissors !</h1>
+    <h4>Hi ! <%= @name %></h4>
+    <p>Choose your move.</p>
+    <form action="/result" method="post">
+        <input type="radio" name="choice"
+        value="rock"> Rock
+        <input type="radio" name="choice"
+        value="paper"> Paper
+        <input type="radio" name="choice"
+        value="scissors"> Scissors
+        <br>
+        <br>
+        <input type="submit" value="submit">
+    </form>
+<body>
+    
+</body>
+</html>
