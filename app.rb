@@ -1,4 +1,5 @@
 require 'sinatra'
+enable :sessions
 
 get '/' do 
 
@@ -12,15 +13,22 @@ end
 
 post '/result' do
     @player_choice = params[:choice]
-    @ai_choice = [Rock, Paper, Scissors].sample
+    @computer_choice = ["rock", "paper", "scissors"].sample
 
-    if @player_choice == @ai_choice
-        @outcome = "DRAW !"
-    else (player_choice == "Rock" && ai_choice == "Scissors") ||
-         (player_choice == "Paper" && ai_choice == "Rock") ||
-         (player_choice == "Scissors" && ai_choice == "Paper")
-        "YOU WIN ! | AI lose !"
+    case
+    when (@player_choice == 'rock' && @computer_choice == 'scissors') ||
+        (@player_choice == 'scissors' && @computer_choice == 'paper') ||
+        (@player_choice == 'paper' && @computer_choice == 'rock')
+    @outcome = "You won!"
+    when (@player_choice == 'scissors' && @computer_choice == 'rock') ||
+        (@player_choice == 'paper' && @computer_choice == 'scissors') ||
+        (@player_choice == 'rock' && @computer_choice == 'paper')
+    @outcome = "You lose!"
     else
-        "AI WIN ! | YOU LOSE !"
+    @outcome = "Draw!"
     end
-end
+
+    puts @outcome
+  
+  erb :result
+  end
